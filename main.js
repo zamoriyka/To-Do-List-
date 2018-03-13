@@ -59,7 +59,6 @@ function deleteItem() {
     var listItem = this.parentNode;
     var ul = listItem.parentNode;
     ul.removeChild(listItem);
-
 }
 
 function editItem() {
@@ -81,7 +80,6 @@ function editItem() {
     }
 
     listItem.classList.toggle('editMode');
-
 }
 
 function finishTasks() {
@@ -92,7 +90,6 @@ function finishTasks() {
     finishedTasks.appendChild(listItem);
     bindEvents(listItem, unfinishedTask);
     localStorageSave();
-
 }
 
 function unfinishedTask() {
@@ -103,7 +100,6 @@ function unfinishedTask() {
     unfinishedTasks.appendChild(listItem);
     bindEvents(listItem, finishTasks);
     localStorageSave();
-
 }
 
 function localStorageSave() {
@@ -123,12 +119,10 @@ function localStorageSave() {
         unfinishedTasks: unfinishedTasksArr,
         finishedTasks: finishedTasksArr
     }));
-
 }
 
 function load() {
     return JSON.parse(localStorage.getItem('todo'));
-
 }
 
 var todoData = load();
@@ -136,14 +130,12 @@ for (var i=0; i<todoData.finishedTasks.length; i++){
     var listItem = createNewElement(todoData.finishedTasks[i], true);
     finishedTasks.appendChild(listItem);
     bindEvents(listItem, finishTasks);
-
 }
 
 for (var i=0; i<todoData.unfinishedTasks.length; i++) {
     var listItem = createNewElement(todoData.unfinishedTasks[i], false);
     unfinishedTasks.appendChild(listItem);
     bindEvents(listItem, unfinishedTask);
-
 }
 
 function bindEvents(listItem, checkEvents) {
